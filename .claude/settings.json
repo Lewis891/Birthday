@@ -7,7 +7,8 @@
       "Bash(\"/c/Program Files/Git/mingw64/libexec/git-core/git-credential-manager.exe\" github logout)",
       "Bash(\"/c/Program Files/Git/mingw64/libexec/git-core/git-credential-manager.exe\" erase)",
       "Bash(echo \"erase exit:$?\")",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git add *)"
     ]
   }
 }

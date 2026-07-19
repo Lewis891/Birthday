@@ -149,7 +149,6 @@
   function openEnvelope() {
     envelopeBtn.classList.add("birthday__envelope--opening");
     envelopeBtn.setAttribute("aria-expanded", "true");
-    preloadPhotos();
 
     setTimeout(() => {
       envelopeBtn.hidden = true;
@@ -184,4 +183,5 @@
 
   buildDots();
   renderContent();
+  preloadPhotos();
 })();
