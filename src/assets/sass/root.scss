@@ -14,7 +14,7 @@
     --bodyTextColorWhite: #ffffff;
 
     /* Backgrounds */
-    --bg-base: #f399ff;
+    --bg-base: oklch(0.94 0.035 18);
     --bg-card: #f9fafb;
     --bg-section-alt: #f3f4f6;
 
@@ -41,6 +41,7 @@
     height: 100vh;
     height: 100dvh;
     overflow: hidden;
+    overscroll-behavior: none;
     font-family: var(--bodyFont);
     font-size: 100%;
     color: var(--bodyTextColor);

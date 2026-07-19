@@ -43,6 +43,21 @@
   const revealEl = document.getElementById("reveal");
 
   const state = { index: 0, animating: false };
+  let photoRequestId = 0;
+
+  function photoSrc(i) {
+    return `assets/images/reasons/${i + 1}.jpg`;
+  }
+
+  function preloadPhotos() {
+    REASONS.forEach((_, i) => {
+      const img = new Image();
+      img.src = photoSrc(i);
+      if (typeof img.decode === "function") {
+        img.decode().catch(() => {});
+      }
+    });
+  }
 
   function buildDots() {
     REASONS.forEach((_, i) => {
@@ -66,9 +81,20 @@
     reasonNumberEl.textContent = `Reason #${i + 1}`;
     reasonTextEl.textContent = REASONS[i];
     counterEl.textContent = `${i + 1} / ${REASONS.length}`;
-    photoContainer.classList.add("birthday__photo--empty");
     photoImg.alt = `Photo of you two — reason ${i + 1}`;
-    photoImg.src = `assets/images/reasons/${i + 1}.jpg`;
+
+    const requestId = ++photoRequestId;
+    photoContainer.classList.add("birthday__photo--empty");
+    photoImg.src = photoSrc(i);
+
+    if (typeof photoImg.decode === "function") {
+      photoImg.decode().then(() => {
+        if (requestId === photoRequestId) {
+          photoContainer.classList.remove("birthday__photo--empty");
+        }
+      }).catch(() => {});
+    }
+
     updateDots();
   }
 
@@ -123,6 +149,7 @@
   function openEnvelope() {
     envelopeBtn.classList.add("birthday__envelope--opening");
     envelopeBtn.setAttribute("aria-expanded", "true");
+    preloadPhotos();
 
     setTimeout(() => {
       envelopeBtn.hidden = true;
@@ -143,9 +170,9 @@
   envelopeBtn.addEventListener("click", openEnvelope);
   prevBtn.addEventListener("click", goPrev);
   nextBtn.addEventListener("click", goNext);
-  photoImg.addEventListener("load", () =>
-    photoContainer.classList.remove("birthday__photo--empty"),
-  );
+  photoImg.addEventListener("load", () => {
+    photoContainer.classList.remove("birthday__photo--empty");
+  });
   photoImg.addEventListener("error", () =>
     photoContainer.classList.add("birthday__photo--empty"),
   );
