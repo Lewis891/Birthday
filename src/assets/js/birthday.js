@@ -16,10 +16,10 @@
     "The way your hair curls after a shower, it looks really good.",
     "The way you smell good all the time.",
     "How excited you get when you have tea to spill.",
-    "That you and your family make me like I am apart of it.",
+    "That you and your family make me feel like I am apart of it.",
     "How you refuse to let me help you park your car.",
     "That you're my best friend.",
-    "How easily I can spend a day doing nothing with you and still have the best time.",
+    "How you make me feel wanted.",
     "How you try not to laugh at my jokes but I can still see you smiling.",
     "That all I want to do is make you happy and feel good. ;)",
     "How you say how much you love my cooking even when its meh.",
@@ -88,11 +88,14 @@
     photoImg.src = photoSrc(i);
 
     if (typeof photoImg.decode === "function") {
-      photoImg.decode().then(() => {
-        if (requestId === photoRequestId) {
-          photoContainer.classList.remove("birthday__photo--empty");
-        }
-      }).catch(() => {});
+      photoImg
+        .decode()
+        .then(() => {
+          if (requestId === photoRequestId) {
+            photoContainer.classList.remove("birthday__photo--empty");
+          }
+        })
+        .catch(() => {});
     }
 
     updateDots();
