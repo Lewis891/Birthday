@@ -1,0 +1,91 @@
+---
+title: "Happy 25th Birthday, Kerra"
+description: "25 reasons why I love you, for Kerra's 25th birthday."
+permalink: "/"
+tags: "sitemap"
+chrome: false
+---
+
+{% extends "layouts/base.html" %} {% block head %}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="{{ '/assets/css/local.css' | url }}" />
+<script defer src="{{ '/assets/js/birthday.js' | url }}"></script>
+{% endblock %} {% block body %}
+
+<div class="birthday">
+  <div class="birthday__blob birthday__blob--top" aria-hidden="true"></div>
+  <div class="birthday__blob birthday__blob--bottom" aria-hidden="true"></div>
+
+  <div class="birthday__intro">
+    <h1 class="birthday__title">Happy 25th Birthday Kerra!</h1>
+    <p class="birthday__message">
+      I know I'm bad at expressing my feelings, so I thought putting them into a
+      website would be fitting. Open the envelope for 25 reasons why I love you.
+    </p>
+  </div>
+
+  <button
+    type="button"
+    class="birthday__envelope"
+    id="envelopeBtn"
+    aria-expanded="false"
+    aria-controls="reveal"
+  >
+    <span class="birthday__envelope-shape" aria-hidden="true">
+      <span class="birthday__envelope-flap"></span>
+      <span class="birthday__envelope-seal">♥</span>
+    </span>
+    <span class="birthday__envelope-label">Tap to open</span>
+  </button>
+
+  <div class="birthday__reveal" id="reveal">
+    <div class="birthday__carousel">
+      <div class="birthday__track-row">
+        <button
+          type="button"
+          class="birthday__nav-btn"
+          id="prevBtn"
+          aria-label="Previous reason"
+        >
+          ‹
+        </button>
+
+        <div class="birthday__slide" id="slide">
+          <div class="birthday__photo birthday__photo--empty" id="photoContainer">
+            <img id="photo" alt="" />
+            <div class="birthday__photo-placeholder">
+              <span aria-hidden="true">📷</span>
+              <p>Add a photo of you two</p>
+            </div>
+          </div>
+
+          <div class="birthday__card">
+            <div class="birthday__card-label" id="reasonNumber">Reason #1</div>
+            <div class="birthday__card-text" id="reasonText"></div>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="birthday__nav-btn"
+          id="nextBtn"
+          aria-label="Next reason"
+        >
+          ›
+        </button>
+      </div>
+
+      <div class="birthday__counter" id="counter">1 / 25</div>
+
+      <div class="birthday__dots" id="dots" aria-label="Choose a reason"></div>
+    </div>
+
+    <p class="birthday__signoff">I love you, always.</p>
+  </div>
+</div>
+
+{% endblock %}

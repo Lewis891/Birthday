@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{{ description }}" />
+    <link rel="canonical" href="{{ client.domain }}{{ page.url | url }}" />
+    <meta name="generator" content="{{ eleventy.generator }}" />
+
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ client.domain }}{{ page.url | url }}" />
+    <meta
+      property="og:image"
+      content="{{ image or '/assets/images/og-image.jpg' | url }}"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="{{ image or '/assets/images/og-image.jpg' | url }}"
+    />
+
+    <!-- Favicons — generate at https://realfavicongenerator.net/ -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ '/assets/favicons/favicon-96x96.png' | url }}"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicons/favicon.svg' | url }}" />
+    <link rel="shortcut icon" href="{{ '/assets/favicons/favicon.ico' | url }}" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{{ '/assets/favicons/apple-touch-icon.png' | url }}"
+    />
+    <meta name="apple-mobile-web-app-title" content="{{ client.name }}" />
+    <link rel="manifest" href="{{ '/assets/favicons/site.webmanifest' | url }}" />
+
+    <!-- Preloads -->
+    <link rel="preload" as="image" href="{{ '/assets/svgs/logo.svg' | url }}" />
+
+    <!-- Sitewide styles and nav script -->
+    <link rel="stylesheet" href="{{ '/assets/css/root.css' | url }}" />
+    <script defer src="{{ '/assets/js/nav.js' | url }}"></script>
+
+    {% block head %}{% endblock %}
+
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    {% if chrome != false %}
+    <a class="skip" aria-label="skip to main content" href="#main"
+      >Click To Skip To Main Content</a
+    >
+
+    {% include "sections/header.html" %}
+    {% endif %}
+    <main id="main">{% block body %}{% endblock %}</main>
+  </body>
+</html>

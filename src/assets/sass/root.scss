@@ -1,0 +1,250 @@
+/*-- -------------------------- -->
+<---        Core Styles         -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0px) {
+  :root {
+    /* Brand colours — update these per project */
+    --primary: #c603e0;
+    --primaryLight: #ffffff;
+    --secondary: #758ee2;
+    --secondaryLight: #ffffff;
+    --headerColor: #1a1a2e;
+    --bodyTextColor: #4b5563;
+    --bodyTextColorWhite: #ffffff;
+
+    /* Backgrounds */
+    --bg-base: #f399ff;
+    --bg-card: #f9fafb;
+    --bg-section-alt: #f3f4f6;
+
+    /* Typography scale */
+    /* 13px - 16px */
+    --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+    /* 31px - 49px */
+    --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+    --bodyFontSize: 1rem;
+
+    /* Spacing */
+    /* 60px - 100px top and bottom */
+    --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+
+    /* Fonts — update to match project typeface */
+    --headerFont: "Roboto", Arial, sans-serif;
+    --bodyFont: "Roboto", Arial, sans-serif;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    font-family: var(--bodyFont);
+    font-size: 100%;
+    color: var(--bodyTextColor);
+    background-color: var(--bg-base);
+    scroll-behavior: smooth;
+  }
+
+  #main {
+    display: block;
+    height: 100%;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Screen reader skip link */
+  .skip {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    &:focus {
+      top: 0;
+      left: 0;
+      z-index: 999999;
+    }
+  }
+
+  /* Common typographic helpers */
+  .cs-topper {
+    font-size: var(--topperFontSize);
+    line-height: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: var(--primary);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .cs-title {
+    font-size: var(--headerFontSize);
+    font-family: var(--headerFont);
+    font-weight: 700;
+    line-height: 1.2em;
+    color: var(--headerColor);
+    margin: 0 0 1rem;
+  }
+
+  .cs-text {
+    font-size: var(--bodyFontSize);
+    line-height: 1.5em;
+    color: var(--bodyTextColor);
+    max-width: 40.625rem;
+  }
+
+  /* Container */
+  .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* Button */
+  .cs-button-solid {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary);
+    color: var(--primaryLight);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: var(--secondary);
+    }
+  }
+}
+
+/*-- -------------------------- -->
+<---         Navigation         -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0px) {
+  #cs-navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    background-color: transparent;
+    transition:
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
+
+    &.cs-scrolled {
+      background-color: var(--bg-base);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .cs-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4rem;
+    }
+
+    .cs-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      img {
+        height: 2.5rem;
+        width: auto;
+      }
+    }
+
+    .cs-nav-list {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .cs-nav-link {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--headerColor);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+}
+
+/*-- -------------------------- -->
+<---           Footer           -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0px) {
+  #cs-footer {
+    padding: var(--sectionPadding);
+    background-color: var(--bg-section-alt);
+
+    .cs-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .cs-logo-img {
+      height: 2.5rem;
+      width: auto;
+    }
+
+    .cs-header {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--headerColor);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .cs-nav,
+    .cs-contact {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .cs-nav-link,
+    .cs-contact-link {
+      font-size: 0.875rem;
+      color: var(--bodyTextColor);
+      text-decoration: none;
+      line-height: 2;
+      transition: color 0.2s ease;
+      &:hover {
+        color: var(--primary);
+      }
+    }
+
+    .cs-copyright {
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--bodyTextColor);
+      margin-top: 2rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 48rem) {
+  #cs-footer {
+    .cs-container {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}
